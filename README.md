@@ -2,7 +2,20 @@
 
 **is an Album Review Blog that allows user to share their insights and opinions on various albums. User can create accounts, write detailed reviews for album, and provide individual ratings. The average rating for each album is dynamically calculated based on the collective reviews, providing users with an overall perspective. Dive into the world of music exploration and join the community discussion on Tune Talk!**
 
+## Wireframe
+
+![alt text] (https://github.com/ArianneSantiago/Tune-Talk/blob/main/New%20Wireframe%201.png)
+
+*Mobile wireframe*
+![alt text] (https://github.com/ArianneSantiago/Tune-Talk/blob/main/Mobile%20Wireframe.png)
+
+*Logged in Browse Albums*
+![alt text] (https://github.com/ArianneSantiago/Tune-Talk/blob/main/List%20of%20Album.png)
 ---
+
+## Database Entity Relationship Diagram
+
+![alt text] (https://github.com/ArianneSantiago/Tune-Talk/blob/main/Database%20ER%20diagram%20(crow's%20foot).png)
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
