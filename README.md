@@ -1,3 +1,9 @@
+# H1 Tune Talk
+
+**is an Album Review Blog that allows user to share their insights and opinions on various albums. User can create accounts, write detailed reviews for album, and provide individual ratings. The average rating for each album is dynamically calculated based on the collective reviews, providing users with an overall perspective. Dive into the world of music exploration and join the community discussion on Tune Talk!**
+
+---
+
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 Welcome,
