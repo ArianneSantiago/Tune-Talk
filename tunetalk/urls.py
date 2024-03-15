@@ -20,5 +20,6 @@ from album_review import views as index_views
 
 urlpatterns = [
     path('', index_views.index, name='index'),
+    path('account/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]
