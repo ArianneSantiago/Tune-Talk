@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- album_list.html content starts here -->
+<div class="container-fluid">
+    <div class="row">
+
+        <!-- Album Entries Column -->
+        <div class="col-12 mt-auto">
+            <div class="row">
+                {% for album in album_list %}
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="image-container">
+                                {% if "placeholder" in album.featured_image.url %}
+                                <img src="{% static 'images/default_album_cover.jpg' %}" alt="placeholder image" class="card-img-top">
+                                {% else %}
+                                <img class="card-img-top" src="{{ album.featured_image.url }}" alt="{{ album.title }}">
+                                {% endif %}
+
+                            </div>
+                            <a href="{% url 'album_list' %}" class="album-link">
+                                <h2 class="card-title">{{ album.title }}</h2>
+                                <!-- <p class="card-texr"></p> -->
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- album_list.html content ends here -->
+{% endblock %}
+
+{% block copyright %}
+Copyright 2024 Arianne Santiago
+{% endblock %}

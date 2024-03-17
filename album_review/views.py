@@ -1,24 +1,20 @@
 from django.shortcuts import render
-# from django.http import HttpResponse
+from django.views.generic import ListView, DetailView
 from .models import Album
 # Create your views here.
 
-def album_list(request):
+class AlbumListView(ListView):
     """
-    View function to display a list of albums.
+    View class to display a list of albums.
     """
-    album = Album.objects.filter(status=1)
-    context = {
-        'album': album
-    }
-    return render(request, 'album_review/album_list.html', context)
+    template_name = 'album_review/album_list.html'
+    queryset = Album.objects.filter(status=1)
+    context_object_name = 'album_list'
 
-def album_detail(request, album_id):
+class AlbumDetailView(DetailView):
     """
-    View function to display details of a single album.
+    View class to display details of a single album.
     """
-    album = Album.objects.get(id=album_id)
-    context = {
-        'album': album
-    }
-    return render(request, 'album_detail.html', context)
+    model = Album
+    template_name = 'album_detail.html'
+    context_object_name = 'album'
