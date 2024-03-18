@@ -24,3 +24,9 @@ class Album(models.Model):
 
     def __str__(self):
         return f"{self.title} {self.artist}"
+
+
+class Review(models.Model):
+    
+
+    
