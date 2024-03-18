@@ -15,7 +15,10 @@
 
 ## Database Entity Relationship Diagram
 
-![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/Database%20ER%20diagram%20(crow's%20foot).png)
+![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/Database%20ER%20Diagram%20.png)
+
+## Flow Chart
+![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/TuneTalk%20Flow%20Chart%20(1).png)
 
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
