@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models import Avg
 from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
@@ -22,8 +23,20 @@ class Album(models.Model):
     class Meta:
         ordering = ["-created_on"]
 
+    def average_rating(self) -> float:
+        return Rating.objects.filter(post=self).aggregate(Avg("rating"))["rating__avg"] or 0
+
     def __str__(self):
-        return f"{self.title} {self.artist}"
+        return f"{self.title}: {self.average_rating()}"
+
+    
+class Rating(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviewer")
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="ratings")
+    rating = models.IntegerField(default=0)
+
+    def __str__(self):
+         return f"{self.album.title}: {self.rating}"
 
 
 
