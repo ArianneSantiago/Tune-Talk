@@ -26,7 +26,5 @@ class Album(models.Model):
         return f"{self.title} {self.artist}"
 
 
-class Review(models.Model):
-    
 
     
