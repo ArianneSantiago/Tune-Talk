@@ -31,12 +31,31 @@ class Album(models.Model):
 
     
 class Rating(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviewer")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ratings_given")
     album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="ratings")
     rating = models.IntegerField(default=0)
 
     def __str__(self):
          return f"{self.album.title}: {self.rating}"
+
+
+class Review(models.Model):
+
+    album = models.ForeignKey(Album, on_delete=models.CASCADE, related_name="review_post")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="reviewer")
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering =["created_on"]
+
+    def __str__(self):
+        return f"Review for {self.album.title} by {self.user}"
+
+    
+
+
+
 
 
 

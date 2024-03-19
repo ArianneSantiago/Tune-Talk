@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Album, Rating
+from .models import Album, Rating, Review
 
 # Register your models here.
 
@@ -11,3 +11,5 @@ class AlbumAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_on'
 
 admin.site.register(Rating)
+
+admin.site.register(Review)
