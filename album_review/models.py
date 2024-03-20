@@ -24,7 +24,7 @@ class Album(models.Model):
         ordering = ["-created_on"]
 
     def average_rating(self) -> float:
-        return Rating.objects.filter(post=self).aggregate(Avg("rating"))["rating__avg"] or 0
+        return Rating.objects.filter(album=self).aggregate(Avg("rating"))["rating__avg"] or 0
 
     def __str__(self):
         return f"{self.title}: {self.average_rating()}"

@@ -15,13 +15,6 @@ class AlbumListView(ListView):
     queryset = Album.objects.filter(status=1)
     context_object_name = 'album_list'
 
-# class AlbumDetailView(DetailView):
-#     """
-#     View class to display details of a single album.
-#     """
-#     model = Album
-#     template_name = 'album_detail.html'
-#     context_object_name = 'album'
 
 def album_detail(request, pk):
 
@@ -44,6 +37,10 @@ def album_detail(request, pk):
             )
     
     review_form = ReviewForm()
+
+    # Print statements to check the context
+    print("Review Count:", review_count)
+    print("Reviews:", review)
 
     return render(
         request, "album_review/album_detail.html", {
@@ -90,42 +87,18 @@ def review_delete(request, pk, review_id):
 def index(request: HttpRequest) -> HttpResponse:
     albums = Album.objects.all()
     for album in albums:
-        rating = Rating.objects.filter(album=album, user=request.user).first()
-        album.user_rating = rating.rating if rating else 0
-    return render(request, "album_detail.html", {"albums": albums})
+        rating = Rating.objects.filter(album=album).aggregate(Avg('rating'))['rating__avg']
+        album.average_rating = rating if rating else 0
+    return render(request, "album_review/album_list.html", {"albums": albums})
 
 
-def rate(request: HttpRequest, album_id: int, rating:int) -> HttpResponse:
+
+def rate(request: HttpRequest, album_id: int, rating: int) -> HttpResponse:
     """
     This views checks if the user has made any rating for each album, and, if so,
     saves it into the list so we can display it at the Front-End
     """
-    albums = Album.objects.get(id=album_id)
+    album = Album.objects.get(id=album_id)
     Rating.objects.filter(album=album, user=request.user).delete()
-    album.rating_set.create(user=request.user, rating=rating)
+    album.ratings.create(user=request.user, rating=rating)
     return index(request)
-
-# def review_list(request):
-#     reviews = Review.objects.all()
-#     return render(request, 'album_detail.html', {'reviews': reviews})
-
-# def add_review(request):
-#     if request.method == 'POST':
-#         form = ReviewForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('album_detail.html')
-#     else:
-#         form = ReviewForm()
-#     return render(request, 'album_detail.html', {'form': form})
-
-# def edit_review(request, album_id):
-#     review = get_object_or_404(Review, pk=album_id)
-#     if request.method == 'POST':
-#         form = ReviewForm(request.POST, instance=review)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('album_detail.html')
-#     else:
-#         form = ReviewForm(instance=review)
-#     return render(request, )
