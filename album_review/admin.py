@@ -12,4 +12,8 @@ class AlbumAdmin(admin.ModelAdmin):
 
 admin.site.register(Rating)
 
-admin.site.register(Review)
+@admin.register(Review)
+
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ('content', 'album', 'user',)
+    date_hierarchy = 'created_on'

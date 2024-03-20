@@ -23,9 +23,9 @@ class AlbumListView(ListView):
 #     template_name = 'album_detail.html'
 #     context_object_name = 'album'
 
-def album_detail(request, album_id):
+def album_detail(request, pk):
 
-    album = get_object_or_404(Album, id=album_id, status=1)
+    album = get_object_or_404(Album, id=pk, status=1)
     review = album.review_post.all().order_by("-created_on")
     review_count = album.review_post.count()
 
@@ -54,11 +54,11 @@ def album_detail(request, album_id):
         },
     )
 
-def review_edit(request, album_id, review_id):
+def review_edit(request, pk, review_id):
 
     if request.method == "POST":
 
-        album = get_object_or_404(Album, id=album_id, status=1)
+        album = get_object_or_404(Album, id=pk, status=1)
         review = get_object_or_404(Review, pk=review_id)
         review_form = ReviewForm(data=request.POST, instance=review)
 
@@ -70,21 +70,21 @@ def review_edit(request, album_id, review_id):
         else:
             messages.add_message(request, messages.ERROR, 'Error updating review!')
 
-    return HttpResponseRedirect(reverse('album_detail', args=[album_id]))
+    return HttpResponseRedirect(reverse('album_detail', args=[pk]))
 
 
-def review_delete(request, album_id, review_id):
+def review_delete(request, pk, review_id):
 
-    album = get_object_or_404(Album, id=album_id, status=1)
+    album = get_object_or_404(Album, id=pk, status=1)
     review = get_object_or_404(Review, pk=review_id)
 
-    if review_user == request.user:
+    if review.user == request.user:
         review.delete()
         messages.add_message(request, messages.SUCCESS, 'Review deleted!')
     else:
         messages.add_message(request, messages.ERROR, 'You can only delete your own reviews!')
 
-    return HttpResponseRedirect(reverse('album_detail', args=[album_id]))
+    return HttpResponseRedirect(reverse('album_detail', args=[pk]))
 
 
 def index(request: HttpRequest) -> HttpResponse:

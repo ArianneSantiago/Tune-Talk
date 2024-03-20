@@ -4,7 +4,33 @@
 {% block content %}
 
 <!-- album_detail.html content starts here -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ album.title }}</h1>
+            <p>Artist: {{ album.artist }}</p>
+            <p>Release Year: {{ album.release_year }}</p>
+            <p>Genre: {{ album.genre }}</p>
+            <!-- Add more album details as needed -->
 
+            <!-- Form to submit a review -->
+            <form method="post">
+                {% csrf_token %}
+                {{ review_form.as_p }}
+                <button type="submit" class="btn btn-primary">Submit Review</button>
+            </form>
+
+            <!-- Display existing reviews -->
+            <h2>Reviews</h2>
+            <ul>
+                {% for review in review %}
+                    <li>{{ review.content }}</li>
+                    <!-- Add more review details as needed -->
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 
 
 <!-- album_detail.html content ends here -->

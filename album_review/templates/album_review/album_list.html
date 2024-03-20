@@ -22,7 +22,7 @@
                                 {% endif %}
 
                             </div>
-                            <a href="{% url 'album_detail' album.id %}" class="album-link">
+                            <a href="{% url 'album_detail' pk=album.pk %}" class="album-link">
                                 <h2 class="card-title">{{ album.title }}</h2>
                                 <!-- <p class="card-texr"></p> -->
                             </a>
