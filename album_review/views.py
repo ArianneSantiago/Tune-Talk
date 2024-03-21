@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views.generic import ListView, DetailView
 from django.contrib import messages
 from .models import Album, Rating, Review
@@ -19,8 +19,9 @@ class AlbumListView(ListView):
 def album_detail(request, pk):
 
     album = get_object_or_404(Album, id=pk, status=1)
-    review = album.review_post.all().order_by("-created_on")
-    review_count = album.review_post.count()
+    reviews = album.review_post.all().order_by("created_on")
+    review_count = reviews.count()
+    review_form = ReviewForm()
 
     if request.method == 'POST':
 
@@ -36,16 +37,10 @@ def album_detail(request, pk):
                 'Review submitted'
             )
     
-    review_form = ReviewForm()
-
-    # Print statements to check the context
-    print("Review Count:", review_count)
-    print("Reviews:", review)
-
     return render(
         request, "album_review/album_detail.html", {
             "album": album,
-            "review": review,
+            "reviews": reviews,
             "review_count": review_count,
             "review_form": review_form,
         },

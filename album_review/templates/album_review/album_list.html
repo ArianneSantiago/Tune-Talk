@@ -28,8 +28,7 @@
                             </a>
                                 <h5>{{ album.artist }}</h5>
                                 <h5>{{ album.release_year }}</h5>
-                                <h5>{{ album.genre }}</h5>
-                                <h5>{{ album.created_on }}</h5>
+                                <h5>{{ album.genre }}</h5>                               
                                 <h5 class="card-title">Avg rating:
                                     <span class="fa fa-star {% if album.average_rating > 0 %} checked {% endif %}"></span>
                                     <span class="fa fa-star {% if album.average_rating > 1 %} checked {% endif %}"></span>
@@ -37,6 +36,7 @@
                                     <span class="fa fa-star {% if album.average_rating > 3 %} checked {% endif %}"></span>
                                     <span class="fa fa-star {% if album.average_rating > 4 %} checked {% endif %}"></span>
                                 </h5>
+                                
                     
                                 <ul class="btn btn-light list-inline rating-list">
                                     <li onclick="rate(5, '{{ album.id }}')">
@@ -56,6 +56,7 @@
                                     </li>
                     
                                 </ul>
+                                <h5>{{ album.created_on }}</h5>
                             
                         </div>
                     </div>
