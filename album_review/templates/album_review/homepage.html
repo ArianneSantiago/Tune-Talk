@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="hero-container">
+    <!-- <img src="{% static 'images/hero-image.jpg' %}" alt="Hero Image" class="hero-image"> -->
+    <div class="hero-text text-center" >
+      <h1>Welcome to Tune Talk</h1>
+      <p>Your go-to destination for music reviews and recommendations</p>
+      <div class="text-center">
+        <a href="{% url 'account_signup' %}" class="btn btn-signup btn-outline-dark">Sign up</a>
+      </div>  
+    </div>
+  </div>
+
+
+{% endblock %}

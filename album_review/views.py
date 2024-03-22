@@ -16,6 +16,9 @@ class AlbumListView(ListView):
     queryset = Album.objects.filter(status=1)
     context_object_name = 'album_list'
 
+def homepage(request):
+    return render(request, 'album_review/homepage.html')
+
 @login_required
 def add_album(request):
     if request.method == 'POST':
