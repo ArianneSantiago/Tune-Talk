@@ -20,37 +20,36 @@
         <div class="col-md-6">
             <!-- Display Album Cover -->
             {% if "placeholder" in album.featured_image.url %}
-            <img src="{% static 'images/default_album_cover.jpg' %}" alt="placeholder image">
+            <img src="{% static 'images/default_album_cover.jpg' %}" alt="placeholder image" class="album-cover">
             {% else %}
-            <img src="{{ album.featured_image.url }}" class="img-fluid" alt="{{ album.title }}">
+            <img src="{{ album.featured_image.url }}" class=" album-cover img-fluid" alt="{{ album.title }}">
             {% endif %}
         </div>
     </div>
 
-        <!-- Display Reviews -->
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <h2>Reviews:</h2>
-                {% if review_count == 0 %}
-                <p>No reviews yet.</p>
-                {% else %}
-                {% for review in reviews %}
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ review.user.username }}</h5>
-                        <p class="card-text">{{ review.content }}</p>
-                        <p class="card-text"><small class="text-muted">{{ review.created_on }}</small></p>
-                        {% if user.is_authenticated and review.user == user %}
-                        <button class="btn btn-delete" data-review_id="{{ review.id }}">Delete</button>
-                        <button class="btn btn-edit" data-review_id="{{ review.id }}">Edit</button>
-                        {% endif %}
-                    </div>
+    <!-- Display Reviews -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <h2>Reviews:</h2>
+            {% if review_count == 0 %}
+            <p>No reviews yet.</p>
+            {% else %}
+            {% for review in reviews %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{ review.user.username }}</h5>
+                    <article class="card-text">{{ review.content | safe }}</article>
+                    <p class="card-text"><small class="text-muted">{{ review.created_on }}</small></p>
+                    {% if user.is_authenticated and review.user == user %}
+                    <a href="{% url 'review_edit' pk=album.pk review_id=review.pk %}" class="btn btn-edit">Edit</a>
+                    <a href="{% url 'review_delete' pk=album.pk review_id=review.pk %}" class="btn btn-delete">Delete</a>
+                    {% endif %}
                 </div>
-                {% endfor%}
-                {% endif %}
             </div>
+            {% endfor %}
+            {% endif %}
         </div>
-    
+    </div>
 
     <!-- Creating New Reviews -->
     <div class="col-md-12 card mb-4 mt-3">
@@ -58,7 +57,7 @@
             {% if user.is_authenticated %}
             <h3>Leave a review:</h3>
             <p>Posting as: {{ user.username }}</p>
-            <form id="reviewForm" method="post" style="margin-top: 1.3em;">
+            <form id="reviewForm" method="post" style="margin-top: 1.3em;" action="{% url 'album_detail' album.pk %}">
                 {{ review_form | crispy }}
                 {% csrf_token %}
                 <button id="submitButton" type="submit" class="btn btn-dark btn-lg">Submit</button>
@@ -69,32 +68,19 @@
         </div>
     </div>
 
-    <!-- Display success and error messages
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %} -->
-
-    <!-- Delete confirmation modal -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete review?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete your review?
-                    This action cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
+    <!-- Rating Form -->
+    <div class="col-md-12 card mb-4 mt-3">
+        <div class="card-body">
+            {% if user.is_authenticated %}
+            <h3>Rate this album:</h3>
+            <form method="post" action="{% url 'rate_album' album.pk %}">
+                {% csrf_token %}
+                <input type="number" name="rating" min="0" max="5" required>
+                <button type="submit" class="btn btn-dark btn-lg">Rate</button>
+            </form>
+            {% else %}
+            <p>Log in to rate this album</p>
+            {% endif %}
         </div>
     </div>
 
