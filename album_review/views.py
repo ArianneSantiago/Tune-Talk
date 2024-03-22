@@ -17,12 +17,14 @@ class AlbumListView(ListView):
     context_object_name = 'album_list'
 
 def homepage(request):
-    return render(request, 'album_review/homepage.html')
+
+    user = request.user
+    return render(request, 'album_review/homepage.html', {'user': user})
 
 @login_required
 def add_album(request):
     if request.method == 'POST':
-        form = AlbumForm(request.POST)
+        form = AlbumForm(request.POST, request.FILES)
         if form.is_valid():
             album = form.save()
             return redirect('album_detail', pk=album.pk)

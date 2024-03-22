@@ -11,6 +11,13 @@
                 <h1 class="text-center">Add Album</h1>
                 {% csrf_token %}
                 {{ form | crispy }} 
+
+                {% if "form.instance.featured_image" %}
+                <img src="{{ form.instance.featured_image.url }}" class="card-img-top" alt="{{ form.instance.title }}">
+                {% else %}
+                <img class="card-img-top" src="{% static 'images/default_album_cover.jpg' %}" alt="Album Cover">
+                {% endif %}
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-lg btn-outline-dark my-2">Submit</button>
                 </div>
