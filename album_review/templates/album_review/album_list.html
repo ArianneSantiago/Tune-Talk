@@ -4,21 +4,21 @@
 {% block content %}
 
 <!-- album_list.html content starts here -->
-<h1 class="text-center p-2">Latest Reviews</h1>
+<h3 class="text-center latest-review">Latest Reviews</h3>
 <div class="container-fluid">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
         {% for album in album_list %}
         <div class="col mb-4">
-            <div class="card h-100">
+            <div class="review-card h-100">
                 <a href="{% url 'album_detail' pk=album.pk %}" class="album-link">
-                {% if "placeholder" in album.featured_image.url %}
-                <img src="{% static 'images/default_album_cover.jpg' %}" class="card-img-top" alt="Album Cover">
-                {% else %}
-                <img class="card-img-top" src="{{ album.featured_image.url }}" alt="{{ album.title }}">
-                {% endif %}
+                    {% if "placeholder" in album.featured_image.url %}
+                    <img src="{% static 'images/default_album_cover.jpg' %}" class="card-img-top" alt="Album Cover">
+                    {% else %}
+                    <img class="card-img-top" src="{{ album.featured_image.url }}" alt="{{ album.title }}">
+                    {% endif %}
                 </a>
-                <div class="card-body">
-                    <h5 class="card-title">{{ album.title }}</h5>
+                <div class="card-body custom-card-body">
+                    <h5 class="card-title pb-3">{{ album.title }}</h5>
                     <p class="card-text">{{ album.artist }}</p>
                     <p class="card-text">{{ album.release_year }}</p>
                     <p class="card-text">{{ album.genre }}</p>
@@ -30,8 +30,7 @@
                         <span class="fa fa-star {% if album.average_rating > 3 %} checked {% endif %}"></span>
                         <span class="fa fa-star {% if album.average_rating > 4 %} checked {% endif %}"></span>
                     </p>
-                    
-        
+
                     <ul class="btn btn-light list-inline rating-list">
                         <li onclick="rate(5, '{{ album.id }}')">
                             <i class="fa fa-star {% if album.user_rating > 4 %} checked {% endif %}" title="Rate 5"></i>
@@ -55,6 +54,7 @@
         {% endfor %}
     </div>
 </div>
+
 
 <script>
     const rate = (rating, album_id) => {

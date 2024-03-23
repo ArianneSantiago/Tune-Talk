@@ -1,5 +1,6 @@
 body {
     background-color: #F5F5F5;
+    font-family: Montserrat, Oswald, sans-serif;
 }
 
 .album-cover {
@@ -7,6 +8,70 @@ body {
     height: 400px;
     object-fit: cover;
 }
+
+.hero-text  h1 {
+    font-family: Lora, Montserrat, Oswald, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+.hero-text p {
+    font-family: Montserrat, Oswald, sans-serif;
+    font-style: italic;
+    text-align: center;
+}
+
+.detail-title {
+    font-size: 50px;
+    font-family: Lora, Montserrat, Oswald, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    padding-top: 80px;
+    padding-bottom: 10px;
+}
+
+.custom-div p {
+    font-family: Montserrat, Oswald, sans-serif;
+    font-style: italic;
+    color: rgb(26, 26, 26);
+}
+
+.latest-review {
+    font-family: Lora, Montserrat, Oswald, sans-serif;
+    font-style: italic;
+    padding-bottom: 50px;
+}
+
+
+.review-card .card-body {
+    padding: 20px;
+    font-family: Montserrat, Oswald, sans-serif;
+    font-style: italic;
+}
+
+
+.navbar-brand {
+    font-family: 'Lora';
+    font-weight: bold;
+    font-style: italic;
+}
+
+.review-item article {
+    padding: 20px 10px 20px 10px;
+    font-style: italic;
+}
+
+.review-item {
+    border-bottom: 1px solid #ccc; 
+    padding-bottom: 10px; 
+    margin-bottom: 20px; 
+}
+
+.review-item:last-child {
+    border-bottom: none; 
+}
+
 
 /* Rating section */
 

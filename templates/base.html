@@ -16,8 +16,8 @@
     <!-- Google Fonts CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Taprom&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Taprom&display=swap" rel="stylesheet">
+    
     <!-- Font Awesome CSS -->
     <script src="https://kit.fontawesome.com/766ba577d7.js" crossorigin="anonymous"></script>
 
@@ -34,7 +34,7 @@
 
     <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'home' %}" style="font-family: 'Taprom';">Tune Talk</a>
+        <a class="navbar-brand" href="{% url 'home' %}"">Tune Talk</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
           aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -102,17 +102,16 @@
 
 
     <footer class="footer mt-auto py-3 dark-bg">
-      <p class="m-0 text-center text-white">
+      <p class="m-0 text-center text-dark">
         {% block copyright %}
         Made by Arianne Santiago
         {% endblock copyright %}
       </p>
-      <p class="m-0 text-center text-white">Follow us:
+      <p class="m-0 text-center text-black">Follow us:
         <i class="fa-brands fa-facebook"></i>
         <i class="fa-brands fa-instagram"></i>
         <i class="fa-brands fa-spotify"></i>
-        <i class="fa-brands fa-github"></i>
-        <i class="fa-brands fa-youtube"></i>
+        <a href="https://github.com/ArianneSantiago/Tune-Talk" class="text-black"><i class="fa-brands fa-github"></i></a>
       </p>
     </footer>
 
