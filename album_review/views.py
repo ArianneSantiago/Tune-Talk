@@ -15,6 +15,7 @@ class AlbumListView(ListView):
     template_name = 'album_review/album_list.html'
     queryset = Album.objects.filter(status=1)
     context_object_name = 'album_list'
+    paginate_by = 8
 
 def homepage(request):
 
