@@ -9,18 +9,66 @@ body {
     object-fit: cover;
 }
 
+/* Hero Image */
+
+.hero-container {
+    background-image: url("{% static 'images/hero-image.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100vh;
+}
+
+/* Hero Image Text */
+
+.hero-text {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 20px;
+}
+
 .hero-text  h1 {
     font-family: Lora, Montserrat, Oswald, sans-serif;
     font-style: italic;
     font-weight: bold;
     text-align: center;
+    font-size: 3em;
 }
 
 .hero-text p {
     font-family: Montserrat, Oswald, sans-serif;
     font-style: italic;
     text-align: center;
+    font-size: 1em;
 }
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .hero-container {
+        background-size: auto; 
+        background-size: contain; 
+        height: 50vh;
+    }
+
+    .hero-text {
+        padding: 10px;
+        padding-top: 60px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 1.5em; 
+    }
+
+    .hero-text p {
+        font-size: 0.5em;
+    }
+}
+
 
 .detail-title {
     font-size: 50px;
