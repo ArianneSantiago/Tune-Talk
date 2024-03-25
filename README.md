@@ -121,35 +121,35 @@ The landing page provides an introduction to the website with a call to action b
 Key | Name | Field
 --- | --- | ---
 PK | user_id |
-x | email | 
+x | email | EmailField
 x | password |
 
 > Album Model
-| Key | Name | Field |
-| --- | --- | --- |
-| x | title | CharField |
-| x | artist | CharField |
-| x | release_year | IntegerField |
-| x | genre | CharField |
-| x | featured_image | CloudinaryField |
-| x | status | IntegerField |
-| x | created_on | DateTimeField |
-| x | updated_on | DateTimeField |
+Key | Name | Field
+--- | --- | ---
+x | title | CharField
+x | artist | CharField
+x | release_year | IntegerField
+x | genre | CharField
+x | featured_image | CloudinaryField
+x | status | IntegerField
+x | created_on | DateTimeField
+x | updated_on | DateTimeField
 
 > Review Model
-| Key | Name | Field |
-| --- | --- | --- |
-| FK | album | ForeignKey |
-| FK | user | ForeignKey |
-| x | content | TextField |
-| x | created_on | DateTimeField |
+Key | Name | Field
+--- | --- | ---
+FK | album | ForeignKey 
+FK | user | ForeignKey
+x | content | TextField
+x | created_on | DateTimeField
 
 > Rating Model
-| Key | Name | Field |
-| --- | --- | --- |
-| FK | user | ForeignKey |
-| FK | album | oreignKey |
-|  | rating | IntegerField |
+Key | Name | Field
+--- | --- | ---
+FK | user | ForeignKey
+FK | album | oreignKey
+ | rating | IntegerField
 
 # Flow Chart
 ![Flow Chart](media/TuneTalk%20Flow%20Chart%20(1).png)
