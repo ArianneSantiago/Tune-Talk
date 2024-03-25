@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from .models import Album, Rating, Review
 from .forms import ReviewForm, AlbumForm
 from django.db.models import Avg
-# Create your views here.
+
 
 class AlbumListView(ListView):
     """

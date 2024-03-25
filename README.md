@@ -28,7 +28,7 @@ Music Enthusiasts: Tune Talk appeals to individuals who have a profound love for
 
 # Agile
 > This project was created using Agile principles via a projectboard on Github. This is the first time I have implemented Agile as an individual developer. However, creating user stories and identifying accepterance criteria acted as a roadmap to target the various features and functionalities of the application. It helped me stay on track and reduced distractions.
-![Project Board]()
+![Project Board](media/project_board.png)
 
 # UX Design Choices
 >Color Scheme:
@@ -43,35 +43,50 @@ The following fonts were chosen for a clean and modern look that is both readabl
 # Priority Features
 ### Homepage:
 > Navbar and Hero Image
-![Homepage]()
+![Homepage](media/Homepage.png)
 
 The landing page provides an introduction to the website with a call to action button encouraging new users to sign up. Signing up and logging in allows them access to view the available album and to add a album to the collection. The navigation bar is valuable for users as it provides quick and easy access to important sections of the website. The navigation bar includes links to Home, Reviews, Add Album, Register/Logout and Sign In.
 
 ### Registration:
 > Registration allows users to add album, review album, and
  It allows them to edit and delete their reviews.
- ![Signup]()
+ ![Signup](media/SignUp.png)
 
 ### Sign In:
-![signin]()
+![signin](media/Signin.png)
+
+### Sign Out:
+![](media/Logout.png)
 
 ### Album List:
-![Album]()
+![Album](media/List_album.png)
 
 ### Album Details:
-![album details]()
+![album details](media/album_detail.png)
 > Users are able to find more information about the album they are interested in. The album details include the title, artist, release year, genre, and album cover image. This provides users with sufficient information about the album.
 
 ### Review:
-![Review]()
+![Review](media/review_post.png)
 >Users can add albums review to the library via a form, and these albums will be visible on those specific album they reviewed.
 
+### Edit Review:
+![](media/edit.png)
+
+### Edit Review Message:
+![](media/edit_message.png)
+
+### Delete Review:
+![](media/)
+
 ### Add album:
-![add album]()
+![add album](media/add_album.png)
 > The form allows users to easily add an album to the library which will then be visible on the reviews page for the users to browse.
 
+### Star Rating:
+![rating](media/Star_rating.png)
+
 ### Footer:
-![footer]()
+![footer](media/footer.png)
 > Links in the footer redirect to respective social media pages.
 
 # Future Features:
@@ -80,17 +95,21 @@ The landing page provides an introduction to the website with a call to action b
 * User can listen to the songs.
 
 # Wireframe
-![alt text]()
+* Homepage:
+![alt text](media/Warframe_1.jpg)
 
-*Mobile wireframe*
-![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/Mobile%20Wireframe.png)
+* Album List and Album Detail:
+![alt text](media/List%20of%20Album.png)
 
-*Logged in Browse Albums*
-![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/List%20of%20Album.png)
+* Mobile wireframe
+![alt text](media/Mobile_homepage.jpg)
+
+* MObile Album List and Album Detail:
+![alt text](media/Mobile%20Wireframe.png)
 
 # Database Entity Relationship Diagram
 
-![alt text](https://github.com/ArianneSantiago/Tune-Talk/blob/main/Database%20ER%20Diagram%20.png)
+![Database](media/Database%20ER%20diagram%20(crow's%20foot).png)
 
 - After deciding on what kind of project and features I wanted to implement I used a lucidchart to plan the database structure.
 - The above diagram is serving as an initial guide to indicate the types and relationships between data stored
@@ -102,7 +121,7 @@ The landing page provides an introduction to the website with a call to action b
 | --- | --- | --- |
 | PK | user_id |  |
 | x | email |  |
-| x | password ||  
+| x | password |  |  
 
 > Album Model
 | Key | Name | Field |
@@ -140,7 +159,7 @@ During the process of creating the app, I found the flow chart to be an efficien
 
 ## HTML
 | Page | W3C URL | Screenshot | Notes |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | Home | W3C |  | Pass: No Errors |
 | Album List | W3C |  | Pass: No Errors |
 | Add Album | W3C |  | Pass: No Errors |
@@ -152,13 +171,13 @@ During the process of creating the app, I found the flow chart to be an efficien
 ## CSS
 I have used the recommended CSS Jigsaw Validator to validate my CSS file.
 | Page | W3C URL | Screenshot | Notes |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | style.css | W3C |  | Pass: No Errors |
 
 ## Python
 I have used the recommended PEP8 CI Python Linter to validate all of my Python files.
 | Page | W3C URL | Screenshot | Notes |
-| -- | -- | -- | -- |
+| --- | --- | --- | --- |
 | Home | W3C |  | Pass: No Errors |
 |  | W3C |  | Pass: No Errors |
 |  | W3C |  | Pass: No Errors |
@@ -186,6 +205,7 @@ Browser Compatibility:
 ![microsoft edge]()
 
 Mobile Device:
+![Mobile]() ![Mobile]()
 ![Mobile]()
 
 # Testing
@@ -215,12 +235,12 @@ I used the steps from LMS and the Django deployment instructions that our facili
 # Bugs
 > I encountered several bugs when working on this project. Some of them have been resolved, such as the issue where uploaded images were not displayed.
 * upload image not displayed
-![bug image not display]()
+![bug image not display](media/)
 * fixed
-![]()
+![](media/bug2.png)
 
 > After I push my project and deployed to Heroku, I run the server again in gitpod and got an error messages indicate that the server is responding with the wrong MIME type for CSS and JavaScript.
-![css bug]()
+![css bug](media/bug1.png)
 
 > The hero image doesn't show on the homepage.
 
