@@ -1,8 +1,6 @@
 # Tune Talk
-![]()
+![](media/mock%20up.png)
 **is an Album Review Website that allows user to share their insights and opinions on various albums. Users can create accounts, write detailed reviews for album, and provide individual ratings. The average rating for each album is dynamically calculated based on the collective reviews, providing users with an overall perspective. Dive into the world of music exploration and join the community discussion on Tune Talk!**
-
-![alt text]()
 
 Deployed version can be viewed [here](https://tune-talk-app-02b083d29396.herokuapp.com/).
 
@@ -108,7 +106,7 @@ The landing page provides an introduction to the website with a call to action b
 ![alt text](media/Mobile%20Wireframe.png)
 
 # Database Entity Relationship Diagram
-
+* Initial Database ERD:
 ![Database](media/Database%20ER%20diagram%20(crow's%20foot).png)
 
 - After deciding on what kind of project and features I wanted to implement I used a lucidchart to plan the database structure.
@@ -139,17 +137,23 @@ x | updated_on | DateTimeField
 > Review Model
 Key | Name | Field
 --- | --- | ---
-FK | album | ForeignKey 
+FK | album | ForeignKey
 FK | user | ForeignKey
 x | content | TextField
-x | created_on | DateTimeField
+x | reated_on | DateTimeField
 
 > Rating Model
 Key | Name | Field
 --- | --- | ---
 FK | user | ForeignKey
-FK | album | oreignKey
+FK | album | ForeignKey
  | rating | IntegerField
+
+Key | Name | Field
+--- | --- | ---
+FK | user | ForeignKey
+FK | album | ForeignKey
+x | rating | IntegerField
 
 # Flow Chart
 ![Flow Chart](media/TuneTalk%20Flow%20Chart%20(1).png)
@@ -161,29 +165,26 @@ During the process of creating the app, I found the flow chart to be an efficien
 ## HTML
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | W3C |  | Pass: No Errors |
-| Album List | W3C |  | Pass: No Errors |
-| Add Album | W3C |  | Pass: No Errors |
-| Album Detail | W3C |  | Pass: No Errors |
-| Edit Review | W3C |  | Pass: No Errors |
-| Sign In | W3C |  | Pass: No Errors |
-| Register | W3C |  | Pass: No Errors |
+| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftune-talk-app-02b083d29396.herokuapp.com%2F) | ![home html](media/home_html.png) | Errors |
+| Album List | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftune-talk-app-02b083d29396.herokuapp.com%2Falbums%2F) | ![album list html](media/album_list.html.png) | Errors |
+| Add Album | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftune-talk-app-02b083d29396.herokuapp.com%2Falbums%2Fadd%2F) | ![add album html](media/add_album_html.png) | Errors |
+| Album Detail | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftune-talk-app-02b083d29396.herokuapp.com%2Falbums%2F9%2F) | ![album detail html](media/album_detail_html.png) | Errors |
+| Edit Review | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Ftune-talk-app-02b083d29396.herokuapp.com%2Falbums%2F10%2Fedit_review%2F23%2F) | ![edit review html](media/edit_html.png) | Errors |
 
 ## CSS
 I have used the recommended CSS Jigsaw Validator to validate my CSS file.
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| style.css | W3C |  | Pass: No Errors |
+| style.css | [W3C](https://jigsaw.w3.org/css-validator/validator) | ![css](media/Css_validator.png) | Pass: No Errors |
 
 ## Python
 I have used the recommended PEP8 CI Python Linter to validate all of my Python files.
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | W3C |  | Pass: No Errors |
-|  | W3C |  | Pass: No Errors |
-|  | W3C |  | Pass: No Errors |
-|  | W3C |  | Pass: No Errors |
-|  | W3C |  | Pass: No Errors |
+| Models.py | W3C | ![models](media/models.py.png) | Pass: No Errors |
+| Forms.py | W3C | ![forms](media/Forms.py.png) | Pass: No Errors |
+| views.py | W3C | ![views](media/views.py.png) | Pass: No Errors |
+| urls.py | W3C | ![url](media/urls.py.png)  | Pass: No Errors |
 
 # Responsiveness
 Development tools were used to test responsiveness on varying sized devices including laptop, mobile and tablet size.
