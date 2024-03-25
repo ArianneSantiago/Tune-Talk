@@ -104,7 +104,7 @@ The landing page provides an introduction to the website with a call to action b
 * Mobile wireframe
 ![alt text](media/Mobile_homepage.jpg)
 
-* MObile Album List and Album Detail:
+* Mobile Album List and Album Detail:
 ![alt text](media/Mobile%20Wireframe.png)
 
 # Database Entity Relationship Diagram
@@ -117,11 +117,12 @@ The landing page provides an introduction to the website with a call to action b
 #### Data Models
 
 >  User Model from Django
-| Key | Name | Field |
-| --- | --- | --- |
-| PK | user_id |  |
-| x | email |  |
-| x | password |  |  
+ 
+Key | Name | Field
+--- | --- | ---
+PK | user_id |
+x | email | 
+x | password |
 
 > Album Model
 | Key | Name | Field |
@@ -205,8 +206,24 @@ Browser Compatibility:
 ![microsoft edge]()
 
 Mobile Device:
-![Mobile]() ![Mobile]()
-![Mobile]()
+* Homepage
+![Mobile](media/Mobile_Homepage.jpg) 
+* Sign Up
+![Mobile](media/Mobile_signup.jpg)
+* Sign Out
+![Mobile](media/Mobile_signout.jpg)
+* Add Album
+![Mobile](media/Mobile_add_album.jpg)
+*Latest Reviews
+![Mobile](media/Mobile_latest_review.jpg)
+* Album Detail
+![Mobile](media/Mobile_album_detail.jpg)
+* Review Post
+![Mobile](media/Mobile_review_post.jpg)
+* Review Form
+![Mobile](media/Mobile_review_form.jpg)
+* Edit Review
+![Mobile](media/Mobile_edit_review.jpg)
 
 # Testing
 
