@@ -19,8 +19,15 @@ from django.urls import path, include
 from album_review import views
 
 urlpatterns = [
+    # Include URLs from the album_review app
     path('', include('album_review.urls')),
-    path('rate/<int:album_id>/<int:rating>/', views.rate),
+
+    # URL for rating an album
+    path('rate/<int:album_id>/<int:rating>/', views.rate, name='rate_album'),
+
+    # Authentication and account management URLs
     path("accounts/", include("allauth.urls")),
+
+    # Admin site URL
     path('admin/', admin.site.urls),
 ]
