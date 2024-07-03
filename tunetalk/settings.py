@@ -30,10 +30,10 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 
-ALLOWED_HOSTS = ['8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io','.herokuapp.com']
+ALLOWED_HOSTS = ['8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io','.herokuapp.com','8000-ariannesantiag-tunetalk-2kugvsgi3fg.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -120,7 +120,8 @@ if 'test' in sys.argv:
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
-    "https://8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io"
+    "https://8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io",
+    "http://8000-ariannesantiag-tunetalk-2kugvsgi3fg.ws.codeinstitute-ide.net"
 ]
 
 # Password validation
