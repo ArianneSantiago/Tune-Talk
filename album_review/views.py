@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Album, Rating, Review
 from .forms import ReviewForm, AlbumForm
-from django.db.models import Avg
+from .utils import rate_album_helper
 
 
 class AlbumListView(ListView):
@@ -54,7 +54,10 @@ def add_album(request):
         form = AlbumForm(request.POST, request.FILES)
         if form.is_valid():
             album = form.save()
+            messages.success(request, 'Album added successfully.')
             return redirect('album_detail', pk=album.pk)
+        else:
+            messages.error(request, 'Error adding album.')
     else:
         form = AlbumForm()
     return render(request, 'album_review/add_album.html', {'form': form})
@@ -76,9 +79,7 @@ def rate_album(request, pk):
     """
     if request.method == 'POST':
         rating = int(request.POST.get('rating'))
-        album = Album.objects.get(pk=pk)
-        Rating.objects.filter(album=album, user=request.user).delete()
-        album.ratings.create(user=request.user, rating=rating)
+        rate_album_helper(pk, request.user, rating)
     return redirect('album_detail', pk=pk)
 
 @login_required
@@ -104,6 +105,8 @@ def review_edit(request, pk, review_id):
             form.save()
             messages.success(request, 'Review updated successfully.')
             return redirect('album_detail', pk=pk)
+        else:
+            messages.error(request, 'Error updating review.')
     else:
         form = ReviewForm(instance=review)
     return render(request, 'album_review/review_edit.html', {'form': form})
@@ -183,7 +186,5 @@ def rate(request, album_id, rating):
     Returns:
         HttpResponseRedirect: Redirects to album list page.
     """
-    album = get_object_or_404(Album, id=album_id)
-    Rating.objects.filter(album=album, user=request.user).delete()
-    album.ratings.create(user=request.user, rating=rating)
+    rate_album_helper(album_id, request.user, rating)
     return redirect('album_list')
