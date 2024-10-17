@@ -11,8 +11,7 @@ body {
 
 /* Hero Image */
 
-.hero-container {
-    background-image: url("{% static 'images/hero-image.jpg' %}");
+Hero Image {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

@@ -27,13 +27,14 @@ TEMPLATES_DIR = os.path.join(BASE_DIR,'templates')
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY", "your-default-key-for-dev")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
-ALLOWED_HOSTS = ['8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io','.herokuapp.com','8000-ariannesantiag-tunetalk-2kugvsgi3fg.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['127.0.0.1','localhost','8000-ariannesantiag-tunetalk-l148x2m388w.ws.codeinstitute-ide.net','.herokuapp.com']
+
 
 
 # Application definition
@@ -57,7 +58,20 @@ INSTALLED_APPS = [
     'album_review',
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 SITE_ID = 1
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
+
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
@@ -111,6 +125,18 @@ WSGI_APPLICATION = 'tunetalk.wsgi.application'
 #     }
 # }
 
+import os
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
+    )
+}
+
+
 if 'test' in sys.argv:
     DATABASES = {
         'default': {
@@ -120,13 +146,14 @@ if 'test' in sys.argv:
     }
 else:
     DATABASES = {
-        'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://8000-ariannesantiag-tunetalk-mj9fpwicigr.ws-eu110.gitpod.io",
     "http://8000-ariannesantiag-tunetalk-2kugvsgi3fg.ws.codeinstitute-ide.net",
+    "https://8000-ariannesantiag-tunetalk-l148x2m388w.ws.codeinstitute-ide.net",
 ]
 
 # Password validation
@@ -147,7 +174,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -164,7 +190,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
