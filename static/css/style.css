@@ -35,7 +35,6 @@ body {
     transform: translate(-50%, -50%);
     text-align: center;
     padding: 20px;
-    color: white;
 }
 
 .hero-text  h1 {
@@ -51,6 +50,16 @@ body {
     font-style: italic;
     text-align: center;
     font-size: 1em;
+}
+
+
+.main-bg {
+    background: none;
+    color: white;
+}
+
+.alert {
+    margin-bottom: 20px;
 }
 
 /* Media query for smaller screens */
