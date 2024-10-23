@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from .models import Album, Rating, Review
-from .forms import ReviewForm, AlbumForm
+from .forms import ReviewForm, AlbumForm, CustomLoginForm, CustomSignupForm
 from .utils import rate_album_helper
 
 
@@ -188,3 +188,9 @@ def rate(request, album_id, rating):
     """
     rate_album_helper(album_id, request.user, rating)
     return redirect('album_list')
+
+# def user_login(request):
+#     if request.method == 'POST':
+#         messages.success(request, 'You have successfully logged in!')
+#     else:
+#         messages.error(request, 'Login failed. Please try agian.')

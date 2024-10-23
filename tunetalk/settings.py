@@ -69,6 +69,10 @@ ACCOUNT_USERNAME_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_FORMS = {
+    'login': 'album_review.forms.CustomLoginForm',
+    'signup': 'album_review.forms.CustomSignupForm',
+}
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -123,8 +127,8 @@ WSGI_APPLICATION = 'tunetalk.wsgi.application'
 #     }
 # }
 
-import os
-import dj_database_url
+# import os
+# import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(

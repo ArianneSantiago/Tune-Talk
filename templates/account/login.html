@@ -22,11 +22,23 @@
         <div class="col-md-8 mt-3 offset-md-2">
             <form class="login" method="POST" action="{% url 'account_login' %}">
                 {% csrf_token %}
-                {{ form.as_p }}
+
+                <div class="mb-3"></div>
+                    <label for="id_login" class="form-label">{{ form.login.label }}</label>
+                    {{ form.login }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">{{ form.password.label }}</label>
+                    {{ form.password }}
+                </div>
+
                 {% if redirect_field_value %}
                 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                 {% endif %}
+                
                 <button class="btn btn-dark right" type="submit">{% trans "Sign In" %}</button>
+
             </form>
         </div>
     </div>
