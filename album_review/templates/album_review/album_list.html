@@ -73,14 +73,25 @@
 
 <script>
     const rate = (rating, album_id) => {
-        fetch(`/rate/${album_id}/${rating}/`, {
-            method: 'GET',
+        fetch(`/albums/${album_id}/rate/?rating=${rating}`, {
+            method: "GET",
             headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json"
             }
-        }).then(rest => {
-            window.location.reload();
         })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                window.location.reload();
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+            alert('An error occurred. Please try again.');
+        });
     }
 </script>
 

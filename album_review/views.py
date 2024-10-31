@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from .models import Album, Rating, Review
 from .forms import ReviewForm, AlbumForm, CustomLoginForm, CustomSignupForm
 from .utils import rate_album_helper
+from django.http import JsonResponse
 
 
 class AlbumListView(ListView):
@@ -99,6 +100,12 @@ def review_edit(request, pk, review_id):
         HttpResponse: Rendered review_edit template.
     """
     review = get_object_or_404(Review, pk=review_id)
+    
+    # Check if the current user is the owner of the review
+    if review.user != request.user:
+        messages.error(request, 'You do not have permission to edit this review.')
+        return redirect('album_detail', pk=pk)
+
     if request.method == 'POST':
         form = ReviewForm(request.POST, instance=review)
         if form.is_valid():
@@ -109,7 +116,35 @@ def review_edit(request, pk, review_id):
             messages.error(request, 'Error updating review.')
     else:
         form = ReviewForm(instance=review)
+
     return render(request, 'album_review/review_edit.html', {'form': form})
+
+@login_required
+def review_delete(request, pk, review_id):
+    """
+    Delete a review.
+
+    POST requests: Delete the review and redirect to album detail page.
+    GET requests: No operation.
+
+    Args:
+        request: HttpRequest object.
+        pk (int): Primary key of the album related to the review.
+        review_id (int): Primary key of the review to delete.
+
+    Returns:
+        HttpResponseRedirect: Redirects to album detail page.
+    """
+    review = get_object_or_404(Review, pk=review_id)
+    
+    # Check if the current user is the owner of the review
+    if review.user == request.user:
+        review.delete()
+        messages.success(request, 'Review deleted successfully.')
+    else:
+        messages.error(request, 'You are not allowed to delete this review.')
+    
+    return redirect('album_detail', pk=pk)
 
 @login_required
 def review_delete(request, pk, review_id):
@@ -172,25 +207,29 @@ def album_detail(request, pk):
         {"album": album, "reviews": reviews, "review_count": review_count, "review_form": review_form}
     )
 
-def rate(request, album_id, rating):
+@login_required
+def rate_album(request, pk):
     """
     Rate an album.
 
-    Saves the rating for the album.
+    Allows a logged-in user to rate an album with a value between 1 and 5.
 
     Args:
         request: HttpRequest object.
-        album_id (int): Primary key of the album to rate.
-        rating (int): The rating to assign to the album.
+        pk (int): Primary key of the album to rate.
 
     Returns:
-        HttpResponseRedirect: Redirects to album list page.
+        JsonResponse: JSON response indicating success or failure.
     """
-    rate_album_helper(album_id, request.user, rating)
-    return redirect('album_list')
+    album = get_object_or_404(Album, pk=pk)
+    rating = request.GET.get("rating")
 
-# def user_login(request):
-#     if request.method == 'POST':
-#         messages.success(request, 'You have successfully logged in!')
-#     else:
-#         messages.error(request, 'Login failed. Please try agian.')
+    if rating and rating.isdigit():
+        rating = int(rating)
+        if 1 <= rating <= 5:
+            rate_album_helper(album.id, request.user, rating)
+            return JsonResponse({"success": True, "message": "Rating submitted!"})
+        else:
+            return JsonResponse({"success": False, "message": "Invalid rating value."})
+    else:
+        return JsonResponse({"success": False, "message": "Rating must be a number."})
