@@ -42,7 +42,7 @@
                 <p><small class="text-muted">{{ review.created_on }}</small></p>
                 {% if user.is_authenticated and review.user == user %}
                 <a href="{% url 'review_edit' pk=album.pk review_id=review.pk %}" class="btn btn-edit btn-outline-dark">Edit</a>
-                <a href="{% url 'review_delete' pk=album.pk review_id=review.pk %}" class="btn btn-delete btn-outline-dark">Delete</a>
+                <a href="{% url 'review_delete' pk=album.pk review_id=review.pk %}" class="btn btn-delete btn-outline-dark" onclick="return confirmDeleteReview();">Delete</a>
                 {% endif %}
             </div>
             {% endfor %}
