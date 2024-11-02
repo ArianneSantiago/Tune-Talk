@@ -74,7 +74,7 @@ The landing page provides an introduction to the website with a call to action b
 ![](media/edit_message.png)
 
 ### Delete Review:
-![](media/)
+![](media/review_delete.png)
 
 ### Add album:
 ![add album](media/add_album.png)
@@ -123,6 +123,7 @@ x | email | EmailField
 x | password |
 
 > Album Model
+
 Key | Name | Field
 --- | --- | ---
 x | title | CharField
@@ -135,6 +136,7 @@ x | created_on | DateTimeField
 x | updated_on | DateTimeField
 
 > Review Model
+
 Key | Name | Field
 --- | --- | ---
 FK | album | ForeignKey
@@ -143,11 +145,6 @@ x | content | TextField
 x | reated_on | DateTimeField
 
 > Rating Model
-Key | Name | Field
---- | --- | ---
-FK | user | ForeignKey
-FK | album | ForeignKey
- | rating | IntegerField
 
 Key | Name | Field
 --- | --- | ---
@@ -194,8 +191,9 @@ Full testing was performed on the following devices:
 Laptop:
 * Lenovo ideapad 14" screen
 
-Mobile Device:
+Mobile Devices:
 * Android Device Oneplus
+* iPhone 16 Pro Max
 
 Browser Compatibility:
 >  I have tested the site using the following browsers:
