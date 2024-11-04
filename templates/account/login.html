@@ -7,7 +7,7 @@
 
 {% block content %}
 
-<div class="container">
+<!-- <div class="container">
     <div class="row">
         <div class="col-md-8 mt-3 offset-md-2">
             <h3>{% trans "Sign In" %}</h3>
@@ -42,5 +42,42 @@
             </form>
         </div>
     </div>
+</div> -->
+
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-8 col-lg-6">
+            <h3 class="text-center mb-4">{% trans "Sign In" %}</h3>
+            
+            <p class="text-center">
+                {% blocktrans %}Welcome back to Tune Talk! To leave a review, please log in. 
+                If you haven't created an account yet, 
+                <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+            </p>
+            
+            <form class="login-form mt-4" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label for="id_login" class="form-label">{{ form.login.label }}</label>
+                    {{ form.login }}
+                </div>
+
+                <div class="mb-3">
+                    <label for="id_password" class="form-label">{{ form.password.label }}</label>
+                    {{ form.password }}
+                </div>
+
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+
+                <div class="d-grid gap-2 mt-3">
+                    <button class="btn btn-dark" type="submit" aria-label="{% trans 'Sign in button' %}">{% trans "Sign In" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
+
 {% endblock %}
