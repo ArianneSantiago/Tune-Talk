@@ -107,7 +107,7 @@ The landing page provides an introduction to the website with a call to action b
 
 # Database Entity Relationship Diagram
 * Initial Database ERD:
-![Database](media/Database%20ER%20Diagram(2).png.png)
+![Database](media/Database%20ER%20Diagram(2).png)
 
 - After deciding on what kind of project and features I wanted to implement I used a lucidchart to plan the database structure.
 - The above diagram is serving as an initial guide to indicate the types and relationships between data stored
