@@ -41,7 +41,7 @@ The following fonts were chosen for a clean and modern look that is both readabl
 # Priority Features
 ### Homepage:
 > Navbar and Hero Image
-![Homepage](media/New Nav and Homepage.png)
+![Homepage](media/New%20Nav%20and%20Homepage.png)
 
 The landing page provides an introduction to the website with a call to action button encouraging new users to sign up. Signing up and logging in allows them access to view the available album and to add a album to the collection. The navigation bar is valuable for users as it provides quick and easy access to important sections of the website. The navigation bar includes links to Home, Reviews, Add Album, Register/Logout and Sign In.
 
