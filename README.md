@@ -248,6 +248,14 @@ The technologies implemented in this application included HTML5, CSS, Bootstrap,
 # Deployment
 I used the steps from LMS and the Django deployment instructions that our facilitator gave for resources.
 
+To deploy the project locally and on Heroku, follow these steps:
+1. Clone the repository.
+2. Install dependencies from `requirements.txt`.
+3. Set up environment variables.
+4. Run migrations.
+5. Create a superuser.
+6. Deploy to Heroku following [these steps](https://devcenter.heroku.com/articles/getting-started-with-python).
+
 # Bugs
 > I encountered several bugs when working on this project. Some of them have been resolved, such as the issue where uploaded images were not displayed.
 * upload image not displayed
