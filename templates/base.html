@@ -12,6 +12,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tune Talk</title>
+  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
 
   <!-- Google Fonts CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,13 +71,6 @@
     </div>
   </nav>
 
-
-
-  <!-- Hero Image -->
-  {% if request.path == home_url %}
-    <img src="{% static 'images/hero-image.jpg' %}" alt="Hero Image" class="hero-image">
-  {% endif %}
-
   <main class="flex-shrink-0 main-bg">
     <!-- Display Django Messages -->
     <div class="container">
@@ -103,7 +97,6 @@
     {% endblock %}
       
   </main>
-
 
   <footer class="footer mt-auto py-3 bg-dark">
     <p class="m-0 text-center text-white">

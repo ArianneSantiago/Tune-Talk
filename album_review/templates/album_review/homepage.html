@@ -3,6 +3,12 @@
 
 {% block content %}
 <div class="hero-container">
+    <!-- Hero Image -->
+    {% if request.path == home_url %}
+    <img src="{% static 'images/TT.jpg' %}" alt="Hero Image" class="hero-image">
+    {% endif %}
+
+    
     <div class="hero-text">
       <h1>Welcome to Tune Talk</h1>
       <p>Your go-to destination for music reviews and recommendations</p>
@@ -14,6 +20,8 @@
       </div> 
       {% endif %} 
     </div>
+
+
   </div>
 
 
