@@ -1,5 +1,5 @@
 # Tune Talk
-![](media/mock%20up.png)
+![](media/20241104_211252394_iOS.png)
 **is an Album Review Website that allows user to share their insights and opinions on various albums. Users can create accounts, write detailed reviews for album, and provide individual ratings. The average rating for each album is dynamically calculated based on the collective reviews, providing users with an overall perspective. Dive into the world of music exploration and join the community discussion on Tune Talk!**
 
 Deployed version can be viewed [here](https://tune-talk-app-02b083d29396.herokuapp.com/).
@@ -41,7 +41,7 @@ The following fonts were chosen for a clean and modern look that is both readabl
 # Priority Features
 ### Homepage:
 > Navbar and Hero Image
-![Homepage](media/Homepage.png)
+![Homepage](media/New Nav and Homepage.png)
 
 The landing page provides an introduction to the website with a call to action button encouraging new users to sign up. Signing up and logging in allows them access to view the available album and to add a album to the collection. The navigation bar is valuable for users as it provides quick and easy access to important sections of the website. The navigation bar includes links to Home, Reviews, Add Album, Register/Logout and Sign In.
 
